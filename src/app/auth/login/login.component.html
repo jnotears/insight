@@ -1,0 +1,38 @@
+<div class="flex-container">
+    <div>
+        <img class="img-login" src="../assets/images/login-office.jpeg" alt="">
+    </div>
+    <mat-card>
+        <mat-card-title>Insight</mat-card-title>
+        <mat-card-content>
+            <!-- <form [formGroup]="form" (ngSubmit)="submit()"> -->
+            <form>
+                <p>
+                    <mat-form-field>
+                        <input type="text" matInput placeholder="Username" formControlName="username">
+                    </mat-form-field>
+                </p>
+    
+                <p>
+                    <mat-form-field>
+                        <input type="password" matInput placeholder="Password" formControlName="password">
+                    </mat-form-field>
+                </p>
+    
+                <!-- <p *ngIf="error" class="error">
+                    {{ error }}
+                </p> -->
+                <div>
+                    <button mat-stroked-button (click)="onLoginGithub()">
+                        <img src="../assets/icons/github.svg" alt="">
+                        Login With GitHub
+                    </button>
+                </div>
+                <div class="button">
+                    <button type="submit" mat-stroked-button>Login</button>
+                </div>
+    
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

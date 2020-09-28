@@ -1,0 +1,44 @@
+<div class="repo-title">
+    Repositories
+</div>
+<div>
+    <table class="repository-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Status</th>
+                <th>Last Update</th>
+                <th>Sync Github</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let repo of repos">
+                <td>
+                    {{repo.id}}
+                </td>
+                <td>
+                    {{repo.name}}
+                </td>
+                <td>
+                    <span *ngIf="repo.sync; else elseBlock">
+                        Sync
+                    </span>
+                    <ng-template #elseBlock>
+                        <span>
+                            Pending
+                        </span>
+                    </ng-template>
+                </td>
+                <td>
+                    {{repo.updated_at | date: 'medium'}}
+                </td>
+                <td>
+                    <button (click)="registerHook(repo.id)">
+                        <img src="assets/icons/sync.svg">
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,41 @@
+<mat-grid-list cols="3" rowHeight="1:0.5">
+    <mat-grid-tile>
+        <div class="inline">
+            <mat-icon aria-hidden="false" aria-label="Example home icon">error_outline</mat-icon>
+            <span class="text-center">
+                <div class="review-title">
+                    Total Repository
+                </div>
+                <div class="review-total">
+                    {{totalSyncRepo}}
+                </div>
+            </span>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div class="inline">
+            <mat-icon aria-hidden="false" aria-label="Example home icon" style="transform: rotate(180deg);">insert_chart_outlined</mat-icon>
+            <span class="text-center">
+                <div class="review-title">
+                    Total Project
+                </div>
+                <div class="review-total">
+                    {{totalSyncProject}}
+                </div>
+            </span>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+        <div class="inline">
+            <mat-icon aria-hidden="false" aria-label="Example home icon">error_outline</mat-icon>
+            <span class="text-center">
+                <div class="review-title">
+                    Total Issue
+                </div>
+                <div class="review-total">
+                    {{totalSyncIssue}}
+                </div>
+            </span>
+        </div>
+    </mat-grid-tile>
+</mat-grid-list>

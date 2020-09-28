@@ -1,0 +1,36 @@
+.repo-title{
+    margin-top: 36px;
+    margin-left: 36px;
+    color: #64bd64;
+    font-size: 24px;
+    padding-bottom: 12px;
+}
+
+.repository-table{
+    border-collapse: collapse;
+    width: 95%;
+    table-layout: fixed;
+    background-color: #f0fcf0;
+    margin: 0 36px 36px 36px;
+    //padding: 0px 10px;
+    color: #64bd64;
+    box-shadow: 2px 3px 4px 3px #e0e0e0;
+}
+
+.repository-table thead th{
+    padding: 20px;
+    text-align: left;
+}
+
+.repository-table tbody th, td{
+    border-top: 1px solid #64bd64;
+    text-align: left;
+    vertical-align: middle;
+    padding: 10px 20px;
+}
+
+tbody tr:hover{
+    background-color: #cfeb34;
+}
+
+

@@ -1,0 +1,94 @@
+.nav-container {
+    position: absolute;
+    top: 74px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    //background: #f5fcf6;
+    background-color: #fcfcfc;
+
+}
+
+.mat-drawer{
+    width: 200px;
+    background-color: #fcfcfc;
+}
+
+.vertical-menu a {
+    color: black; /* Black text color */
+    display: block; /* Make the links appear below each other */
+    padding: 12px; /* Add some padding */
+    text-decoration: none; /* Remove underline from links */
+}
+  
+.vertical-menu a:hover {
+    background-color: #eee; /* Dark grey background on mouse-over */
+}
+
+.vertical-menu a.active {
+    background-color: #dff5df; /* Add a green color to the "active/current" link */
+    color: #64bd64;
+}
+
+ul.vertical-menu {
+    list-style-type:none;
+    padding-inline-start: 0px;
+    margin: 0px;
+}
+
+li.vertical-menu{
+    display: inline-block;
+    width: 100%;
+}
+
+.app-navbar{
+    height:74px;
+    background-color: #4CAF50;
+    text-align: justify;
+    //display: block;
+    display: flex;
+    justify-content: space-between;
+}
+
+// .app-navbar:after{
+//     content: '';
+//     width: 100%;
+//     display: inline-block;
+// }
+
+.nav-item{
+    display: inline-block;
+    line-height: normal;
+}
+
+.app-logo{
+    padding-left: 20px;
+    font-size: 24px;
+    height:74px;
+    line-height: 74px;
+    color: white;
+}
+
+a{
+    text-decoration: none;
+}
+
+.vertical-menu li a {
+    padding-left: 20px;
+}
+
+.mat-icon{
+    vertical-align: bottom;
+}
+
+.mat-icon .app-logo{
+    vertical-align: center;
+}
+
+span.app-logout-button{
+    cursor: pointer;
+    //display: inline-block;
+    //justify-items: end;
+    height: 74px;
+    line-height: 74px;
+}

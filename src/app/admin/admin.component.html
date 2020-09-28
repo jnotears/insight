@@ -1,0 +1,55 @@
+<div class="admin-component">
+    <div class="app-navbar">
+        <div class="nav-item">
+            <a routerLink="dashboard" routerLinkActive="active">
+                <span class="app-logo">
+                    <!-- <mat-icon>construction</mat-icon> -->
+                    INSIGHT
+                </span>
+            </a>
+        </div>
+        <div class="nav-item">
+            <span class="app-logout-button" (click)="onLogout()">
+                <mat-icon aria-hidden="false" aria-label="Example home icon">login</mat-icon>
+            </span>
+        </div>
+    </div>
+    <div>
+        <mat-sidenav-container class="nav-container">
+            <mat-sidenav mode="side" opened>
+                <div class="background">
+                    <ul class="vertical-menu">
+                        <li>
+                            <a routerLink="dashboard" routerLinkActive="active">
+                                <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="repos" routerLinkActive="active">
+                                <mat-icon aria-hidden="false" aria-label="Example home icon">class</mat-icon>
+                                Repositories
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="airtable/config" routerLinkActive="active">
+                                <mat-icon aria-hidden="false" aria-label="Example home icon">construction</mat-icon>
+                                AirTable
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="profile" routerLinkActive="active">
+                                <mat-icon aria-hidden="false" aria-label="Example home icon">person</mat-icon>
+                                Profile
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </mat-sidenav>
+            <mat-sidenav-content>
+                <router-outlet></router-outlet>
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+    </div>
+</div>
+

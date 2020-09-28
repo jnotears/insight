@@ -1,0 +1,162 @@
+<div class="airtable-title">
+    AirTable Config
+    <mat-icon aria-hidden="false" aria-label="Example home icon">construction</mat-icon>
+</div>
+<div class="airtable-content">
+    <table class="config-table">
+        <thead>
+            <tr>
+                <th>Connect Name</th>
+                <th>API Key</th>
+                <th>Base ID</th>
+                <th>Table Name</th>
+                <th>Last Update</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container  *ngFor="let config of configs" >
+                <tr (click)="showTableExpanded()">
+                    <td>
+                        {{config.connect_name}}
+                    </td>
+                    <td>
+                        {{config.api_key}}
+                    </td>
+                    <td>
+                        {{config.base_id}}
+                    </td>
+                    <td>
+                        {{config.table_name}}
+                    </td>
+                    <td>
+                        {{config.updated_at | date: 'medium'}}
+                    </td>
+                    <td>
+                        <span *ngIf="config.active; else elseBlock">
+                            Active
+                        </span>
+                        <ng-template #elseBlock>
+                            <span>
+                                Deactive
+                            </span>
+                        </ng-template>
+                    </td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+    <div class="airtable-add-new">
+        <div>
+            <span class="add-label" (click)="showAddForm()">
+                Add new Airtable config...
+            </span>
+        </div>
+        <div id="mat-stepper" style="display: none;">
+            <mat-horizontal-stepper [linear]="true" #stepper>
+                <mat-step [stepControl]="configFormGroup">
+                    <form [formGroup]="configFormGroup">
+                        <ng-template matStepLabel>Adding your AirTable config</ng-template>
+                        <mat-form-field>
+                            <mat-label>Connect Name</mat-label>
+                            <input matInput placeholder="Connect Name" formControlName="connect_name" required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>API Key</mat-label>
+                            <input matInput placeholder="API Key" formControlName="api_key" required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Base ID</mat-label>
+                            <input matInput placeholder="Base ID" formControlName="base_id" required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Table Name</mat-label>
+                            <input matInput placeholder="Table Name" formControlName="table_name" required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Active</mat-label>
+                            <input matInput placeholder="Active" formControlName="active">
+                        </mat-form-field>
+                        <div>
+                            <button mat-button matStepperNext>Next</button>
+                        </div>
+                    </form>
+                </mat-step>
+                <mat-step [stepControl]="tableFormGroup" label="Customize your AirTable fields">
+                    <form [formGroup]="tableFormGroup">
+                        <mat-form-field>
+                            <mat-label>Issue ID</mat-label>
+                            <input matInput formControlName="issue_id" placeholder="Enter if selected">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Issue Name</mat-label>
+                            <input matInput formControlName="issue_name" placeholder="Enter if selected"
+                                required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Issue Number</mat-label>
+                            <input matInput formControlName="issue_number" placeholder="Enter if selected">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Project Name</mat-label>
+                            <input matInput formControlName="project_name" placeholder="Enter if selected"
+                                required>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Issue Status</mat-label>
+                            <input matInput formControlName="state" placeholder="Enter if selected">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Issue Author</mat-label>
+                            <input matInput formControlName="author" placeholder="Enter if selected">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Issue Detail</mat-label>
+                            <input matInput formControlName="content" placeholder="Enter if selected">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Issue URL</mat-label>
+                            <input matInput formControlName="url" placeholder="Enter if selected">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Repo ID</mat-label>
+                            <input matInput formControlName="repo_id" placeholder="Enter if selected">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Closed At</mat-label>
+                            <input matInput formControlName="closed_at" placeholder="Enter if selected">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Estimate</mat-label>
+                            <input matInput formControlName="estimate" placeholder="Enter if selected">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Assignee</mat-label>
+                            <input matInput formControlName="assignee" placeholder="Enter if selected">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Created At</mat-label>
+                            <input matInput formControlName="created_at" placeholder="Enter if selected">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Updated At</mat-label>
+                            <input matInput formControlName="updated_at" placeholder="Enter if selected">
+                        </mat-form-field>
+                        <div>
+                            <button mat-button matStepperPrevious>Back</button>
+                            <button mat-button matStepperNext (click)="onRegisterConfig()">Register</button>
+                        </div>
+                    </form>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>Done</ng-template>
+                    <p>You are now done.</p>
+                    <div>
+                        <button mat-button matStepperPrevious>Back</button>
+                        <button mat-button (click)="stepper.reset()">Add more config</button>
+                    </div>
+                </mat-step>
+            </mat-horizontal-stepper>
+        </div>
+    </div>
+</div>

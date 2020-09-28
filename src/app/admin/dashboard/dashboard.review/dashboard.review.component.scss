@@ -1,0 +1,48 @@
+.mat-grid-tile {
+    margin-right: 24px;
+}
+  
+.mat-grid-tile .mat-figure {
+    justify-content: flex-start !important ;
+    align-items: flex-start !important;
+    margin-right: 24px !important;
+}
+
+.block{
+    display: block;
+    text-align: center;
+ }
+
+.inline{
+    display: flex;
+    background: #f0fcf0;
+    width: 90%;
+    height: 90%;
+    align-items: center;
+    justify-content: center;
+    color: #64bd64;
+    cursor: pointer;
+}
+
+.text-center{
+    text-align: center;
+    margin-left: 5px;
+}
+
+.review-title{
+    font-size: 18px;
+    padding-bottom: 3px;
+}
+
+.material-icons{
+    font-size: 40px;
+}
+
+.mat-icon{
+    width: 40px;
+    height: 40px;
+}
+
+.review-total{
+    font-size: 20px;
+}
