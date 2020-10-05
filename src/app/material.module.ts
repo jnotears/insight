@@ -10,6 +10,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatSortModule } from '@angular/material/sort';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 const modules = [
@@ -23,7 +28,12 @@ const modules = [
     MatIconModule,
     MatGridListModule,
     MatTabsModule,
-    MatStepperModule
+    MatStepperModule,
+    MatSortModule,
+    MatDialogModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatTooltipModule
 ];
 @NgModule({
     imports: modules,

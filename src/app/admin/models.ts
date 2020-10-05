@@ -82,3 +82,7 @@ export class AirConfigDetail{
     updated_at: string;
     project_name: string;
 }
+
+export class AirConfigExtended extends AirTableConfig{
+    detail: AirConfigDetail
+}

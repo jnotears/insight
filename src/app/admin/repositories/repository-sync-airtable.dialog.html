@@ -1,0 +1,21 @@
+<p mat-dialog-content>Config your AirTable connection</p>
+<mat-form-field appearance="fill">
+  <mat-label>Select AirTable configs to sync</mat-label>
+  <mat-select [formControl]="airform" multiple>
+    <mat-select-trigger>
+      {{airform.value ? airform.value[0].connect_name : ''}}
+      <span *ngIf="airform.value?.length > 1" class="example-additional-selection">
+        (+{{airform.value.length - 1}} {{airform.value?.length === 2 ? 'other' : 'others'}})
+      </span>
+    </mat-select-trigger>
+    <mat-option *ngFor="let config of configs" [value]="config"
+      matTooltip="{{config.api_key}} | {{config.base_id}} | {{config.table_name}}"
+      [matTooltipPossition]="bellow">
+        {{config.connect_name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onNoClick()">No Thanks</button>
+  <button mat-raised-button mat-dialog-close (click)="onAccept(data.repo_id)" cdkFocusInitial>Ok</button>
+</div>

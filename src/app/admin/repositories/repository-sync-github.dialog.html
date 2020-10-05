@@ -1,0 +1,10 @@
+<div mat-dialog-content>
+  <p>Sync repoistory {{data.repo_name}} from Github?</p>
+</div>
+<div>
+    <mat-checkbox (change)="checkCheckBoxValue($event)" class="example-margin">Also sync to AirTable?</mat-checkbox>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onNoClick()">Back</button>
+  <button mat-raised-button mat-dialog-close (click)="onAccept(data.repo_name)" cdkFocusInitial>Ok</button>
+</div>

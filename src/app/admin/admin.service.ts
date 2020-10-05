@@ -21,6 +21,10 @@ export class AdminService {
         return this.http.get<Repository[]>(this.auth.hostUrl + `/api.github/repos`);
     }
 
+    getAllProjectOfRepo(repo_id: number): Observable<ProjectEntity[]>{
+        return this.http.get<ProjectEntity[]>(this.auth.hostUrl +  `/api.github/repo/projects?repo_id=${repo_id}`);
+    }
+
     registerHook(repo_id: number): Observable<any> {
         const body: {} = {
             repo_id
@@ -33,15 +37,15 @@ export class AdminService {
     }
 
     getSyncIssues(): Observable<IssueEntity[]> {
-        return this.http.get<IssueEntity[]>(this.auth.hostUrl + `/api.github/issues`);
+        return this.http.get<IssueEntity[]>(this.auth.hostUrl + `/api.github/issues/sync`);
     }
 
     getSyncProjects(): Observable<ProjectEntity[]> {
-        return this.http.get<ProjectEntity[]>(this.auth.hostUrl + `/api.github/projects`);
+        return this.http.get<ProjectEntity[]>(this.auth.hostUrl + `/api.github/projects/sync`);
     }
 
     getSyncAssignees(): Observable<Assignee[]> {
-        return this.http.get<Assignee[]>(this.auth.hostUrl + `/api.github/assignees`);
+        return this.http.get<Assignee[]>(this.auth.hostUrl + `/api.github/assignees/sync`);
     }
 
     getAirConfigs(): Observable<AirTableConfig[]>{

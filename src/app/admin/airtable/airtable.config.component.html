@@ -3,49 +3,135 @@
     <mat-icon aria-hidden="false" aria-label="Example home icon">construction</mat-icon>
 </div>
 <div class="airtable-content">
-    <table class="config-table">
-        <thead>
-            <tr>
-                <th>Connect Name</th>
-                <th>API Key</th>
-                <th>Base ID</th>
-                <th>Table Name</th>
-                <th>Last Update</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <ng-container  *ngFor="let config of configs" >
-                <tr (click)="showTableExpanded()">
-                    <td>
-                        {{config.connect_name}}
-                    </td>
-                    <td>
-                        {{config.api_key}}
-                    </td>
-                    <td>
-                        {{config.base_id}}
-                    </td>
-                    <td>
-                        {{config.table_name}}
-                    </td>
-                    <td>
-                        {{config.updated_at | date: 'medium'}}
-                    </td>
-                    <td>
-                        <span *ngIf="config.active; else elseBlock">
-                            Active
-                        </span>
-                        <ng-template #elseBlock>
-                            <span>
-                                Deactive
-                            </span>
-                        </ng-template>
-                    </td>
-                </tr>
+    <div class="mat-elevation-z8"  style="width: 95%;">
+        <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8" matSort>
+            <ng-container matColumnDef="connect_name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Connect Name </th>
+                <td mat-cell *matCellDef="let config"> {{config.connect_name}} </td>
             </ng-container>
-        </tbody>
-    </table>
+            <ng-container matColumnDef="api_key">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> API Key </th>
+                <td mat-cell *matCellDef="let config"> {{config.api_key}} </td>
+            </ng-container>
+            <ng-container matColumnDef="base_id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Base ID </th>
+                <td mat-cell *matCellDef="let config"> {{config.base_id}} </td>
+            </ng-container>
+            <ng-container matColumnDef="table_name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Table Name </th>
+                <td mat-cell *matCellDef="let config"> {{config.table_name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="updated_at">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Updated At </th>
+                <td mat-cell *matCellDef="let config"> {{config.updated_at | date: 'medium'}} </td>
+            </ng-container>
+            <ng-container matColumnDef="active">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+                <td mat-cell *matCellDef="let config">
+                    <span *ngIf="config.active; else elseBlock">
+                        Active
+                    </span>
+                    <ng-template #elseBlock>
+                        <span>
+                            Deactive
+                        </span>
+                    </ng-template>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="expandedDetail">
+                <td mat-cell *matCellDef="let config" [attr.colspan]="configTableColumns.length" style="border: none;">
+                    <div class="example-element-detail"
+                        [@detailExpand]="config == expandedElement ? 'expanded' : 'collapsed'">
+                        <form [formGroup]="tableFormGroupExpanded">
+                            <div mat-subheader>Customize of Table Fields</div>
+                            <div>
+                                <mat-form-field>
+                                    <mat-label>Issue ID</mat-label>
+                                    <input matInput formControlName="issue_id" placeholder="Enter if selected"
+                                        [(ngModel)]="config.detail.issue_id">
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Issue Name</mat-label>
+                                    <input matInput formControlName="issue_name" placeholder="Enter if selected"
+                                        [(ngModel)]="config.detail.name">
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Issue Number</mat-label>
+                                    <input matInput formControlName="issue_number" placeholder="Enter if selected"
+                                        [(ngModel)]="config.detail.number">
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Project Name</mat-label>
+                                    <input matInput formControlName="project_name" placeholder="Enter if selected"
+                                        required [(ngModel)]="config.detail.project_name">
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Issue Status</mat-label>
+                                    <input matInput formControlName="state" placeholder="Enter if selected"
+                                        [(ngModel)]="config.detail.state">
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Issue Author</mat-label>
+                                    <input matInput formControlName="author" placeholder="Enter if selected"
+                                        [(ngModel)]="config.detail.author">
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Issue Detail</mat-label>
+                                    <input matInput formControlName="content" placeholder="Enter if selected"
+                                        [(ngModel)]="config.detail.content">
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Issue URL</mat-label>
+                                    <input matInput formControlName="url" placeholder="Enter if selected"
+                                        [(ngModel)]="config.detail.url">
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Repo ID</mat-label>
+                                    <input matInput formControlName="repo_id" placeholder="Enter if selected"
+                                        [(ngModel)]="config.detail.repo_id">
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Closed At</mat-label>
+                                    <input matInput formControlName="closed_at" placeholder="Enter if selected"
+                                        [(ngModel)]="config.detail.closed_at">
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Estimate</mat-label>
+                                    <input matInput formControlName="estimate" placeholder="Enter if selected"
+                                        [(ngModel)]="config.detail.estimate">
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Assignee</mat-label>
+                                    <input matInput formControlName="assignee" placeholder="Enter if selected"
+                                        [(ngModel)]="config.detail.assignee">
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Created At</mat-label>
+                                    <input matInput formControlName="created_at" placeholder="Enter if selected"
+                                        [(ngModel)]="config.detail.created_at">
+                                </mat-form-field>
+                                <mat-form-field>
+                                    <mat-label>Updated At</mat-label>
+                                    <input matInput formControlName="updated_at" placeholder="Enter if selected"
+                                        [(ngModel)]="config.detail.updated_at">
+                                </mat-form-field>
+                            </div>
+                        </form>
+                    </div>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="configTableColumns"></tr>
+            <tr mat-row *matRowDef="let config; columns: configTableColumns;" class="example-element-row"
+                [class.example-expanded-row]=" expandedElement === config" (click)="expandedElement = config">
+            </tr>
+            <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"
+                style="border-top: 0px;"></tr>
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+
+
     <div class="airtable-add-new">
         <div>
             <span class="add-label" (click)="showAddForm()">
@@ -90,8 +176,7 @@
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label>Issue Name</mat-label>
-                            <input matInput formControlName="issue_name" placeholder="Enter if selected"
-                                required>
+                            <input matInput formControlName="issue_name" placeholder="Enter if selected" required>
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label>Issue Number</mat-label>
@@ -99,8 +184,7 @@
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label>Project Name</mat-label>
-                            <input matInput formControlName="project_name" placeholder="Enter if selected"
-                                required>
+                            <input matInput formControlName="project_name" placeholder="Enter if selected" required>
                         </mat-form-field>
                         <mat-form-field>
                             <mat-label>Issue Status</mat-label>
