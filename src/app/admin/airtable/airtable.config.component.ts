@@ -90,6 +90,7 @@ export class AirTableConfigComponent implements OnInit {
 
     async getAirConfigs() {
         const configs = await this.admin.getAirConfigs().toPromise()
+        console.log(configs);
         if (configs && configs.length > 0) {
             this.getAirConfigDetails(configs);
         }

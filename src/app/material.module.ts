@@ -15,6 +15,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 const modules = [
@@ -33,7 +34,8 @@ const modules = [
     MatDialogModule,
     MatCheckboxModule,
     MatSelectModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatExpansionModule
 ];
 @NgModule({
     imports: modules,

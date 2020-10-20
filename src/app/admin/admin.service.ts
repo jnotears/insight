@@ -61,7 +61,6 @@ export class AdminService {
     }
 
     createAirConfigDetail(detail: AirConfigDetail){
-        console.log('sasadadasdasdasda',detail);
         return this.http.post<AirConfigDetail>(this.auth.hostUrl + `/api.github/airtable.config/table`, detail);
     }
 }
